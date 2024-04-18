@@ -75,6 +75,15 @@
 	}
 }
 
+::-webkit-scrollbar {
+	width: 12px;
+}
+::-webkit-scrollbar-track {
+	@apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+	@apply bg-black w-full rounded-full;
+}
 header {
 	@apply w-full h-[60px] px-5 sm:px-10 flex items-center justify-between gap-5 sticky top-0 bg-white bg-opacity-85 border-b;
 }
@@ -85,6 +94,9 @@ main {
 .page-title {
 	@apply text-3xl font-semibold;
 }
+.section-title {
+	@apply text-lg sm:text-xl font-semibold mb-4;
+}
 .active {
 	@apply text-blue-500;
 }
@@ -93,4 +105,20 @@ main {
 }
 .search-icon {
 	@apply text-[21px];
+}
+.category-pill {
+	@apply text-sm text-center bg-black text-white min-w-28 rounded-full px-4;
+}
+.form-div {
+	@apply flex gap-4 flex-wrap my-2;
+}
+.form-section {
+	@apply flex-1 min-w-48;
+}
+.form-section label {
+	@apply text-sm font-semibold;
+}
+input,
+textarea {
+	@apply focus:border-blue-400;
 }
