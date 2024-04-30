@@ -11,7 +11,10 @@ export async function generateMetadata({ params }) {
 		? category.toUpperCase()
 		: firstCap(category);
 	if (title) {
-		return { title: title, description: 'Plant applications' };
+		return {
+			title: `Herb Nation - ${title}`,
+			description: 'Plant applications',
+		};
 	}
 	return { title: 'Plant Benefits' };
 }
