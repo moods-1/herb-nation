@@ -47,8 +47,9 @@ export async function getPlantById(id) {
 export async function getPlantMetadata(id) {
 	try {
 		await dbConnect();
-		const result = await Plant.findOne({ _id: id, archive: false });		
-		return {title: result.commonName, description: result.description};
+		const result = await Plant.findOne({ _id: id, archive: false });
+		const { commonName, description } = result;
+		return { title: `Herb Nation - ${commonName}`, description };
 	} catch (error) {
 		console.log(error);
 	}
