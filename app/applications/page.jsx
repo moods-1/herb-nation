@@ -7,7 +7,7 @@ import ApplicationCard from './ApplicationCard';
 import CustomSearch from '@/components/CustomSearch';
 import NoData from '@/components/NoData';
 
-export default function Benfits() {
+export default function Applications() {
 	const [searchValue, setSearchValue] = useState('');
 
 	const filterData = APPLICATIONS_ARRAY.filter((c) =>
