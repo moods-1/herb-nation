@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
 	if (plant) {
 		return { title: plant.commonName, description: plant.description };
 	}
-	return { title: 'Plant no found' };
+	return { title: 'Herb Nation' };
 }
 
 export default async function PlantDetails({ params }) {
