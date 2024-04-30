@@ -2,7 +2,8 @@ import Image from 'next/image';
 
 import Regions from './Regions';
 import Applications from './Applications';
-import { getPlantById, getPlantData } from '@/api/actions/plantActions';
+import { getPlantById } from '@/api/actions/plantActions';
+import { getPlantData } from '@/api/actions/metadataActions';
 import NoData from '@/components/NoData';
 
 export default async function PlantDetails({ params }) {

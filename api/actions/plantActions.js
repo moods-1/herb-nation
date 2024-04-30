@@ -44,16 +44,6 @@ export async function getPlantById(id) {
 	}
 }
 
-export async function getPlantData(id) {
-	try {
-		await dbConnect();
-		const result = await Plant.findOne({ _id: id, archive: false });
-		return JSON.parse(JSON.stringify(result));
-	} catch (error) {
-		console.log(error);
-	}
-}
-
 export async function getPlantsByApplication(application) {
 	try {
 		await dbConnect();
