@@ -1,6 +1,7 @@
-import { Input } from './ui/input';
 import { IoIosSearch } from 'react-icons/io';
 import { MdDeleteForever } from 'react-icons/md';
+
+import { Input } from './ui/input';
 
 export default function CustomSearch({
 	changeFunction,

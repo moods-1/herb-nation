@@ -1,14 +1,17 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import { MdOutlineMenu } from 'react-icons/md';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import Link from 'next/link';
 import { HEADER_LINKS } from '@/lib/constants';
 
 export default function Header() {
@@ -29,7 +32,13 @@ export default function Header() {
 	return (
 		<header>
 			<Link href='/'>
-				<p className='text-lg font-semibold'>Herb Nation</p>
+				<Image
+					src='/images/herb-nation-clear-logo.png'
+					alt='logo'
+					width={150}
+					height={40}
+					className='min-w-[150px]'
+				/>
 			</Link>
 			<nav className='gap-5 hidden sm:flex'>
 				{HEADER_LINKS.map(({ label, link }) => (
@@ -47,9 +56,13 @@ export default function Header() {
 					<DropdownMenuTrigger onClick={toggleMenu} className='outline-none'>
 						<MdOutlineMenu size={30} />
 					</DropdownMenuTrigger>
-					<DropdownMenuContent className='bg-white'>
+					<DropdownMenuContent className='bg-slate-950 border-0 text-white'>
 						{HEADER_LINKS.map(({ label, link }) => (
-							<DropdownMenuItem key={label} asChild className='cursor-pointer'>
+							<DropdownMenuItem
+								key={label}
+								asChild
+								className='cursor-pointer hover:bg-slate-900'
+							>
 								<Link
 									href={link}
 									className={`${

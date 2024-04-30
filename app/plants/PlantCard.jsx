@@ -1,4 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import {
 	Card,
 	CardContent,
@@ -6,22 +9,30 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import Link from 'next/link';
 import ModalControl from './ModalControl';
 
-export default function PlantCard({ plant }) {
-	const { _id, commonName, botanicalName, categories, images, description } =
-		plant;
+export default function PlantCard({ plant, modFunction }) {
+	const { _id, commonName, botanicalName, images } = plant;
+	const dev = process.env.NEXT_PUBLIC_DEVELOPMENT === 'true' ? true : false;
+	const showControl = dev && modFunction;
+
 	return (
 		<span>
-			<Link href={`/plants/${_id}`}>
-				<Card className='max-w-80 cursor-pointer'>
-					<CardHeader>
-						<CardTitle>{commonName}</CardTitle>
-						<CardDescription>{botanicalName}</CardDescription>
-					</CardHeader>
+			<Card className='plant-card'>
+				<CardHeader>
+					<div className='flex flex-wrap items-start justify-between gap-2'>
+						<Link href={`/plants/${_id}`}>
+							<CardTitle className='text-base sm:text-lg'>
+								{commonName}
+							</CardTitle>
+							<CardDescription>{botanicalName}</CardDescription>
+						</Link>
+						{showControl ? (
+							<ModalControl plant={plant} modFunction={modFunction} />
+						) : null}
+					</div>
+				</CardHeader>
+				<Link href={`/plants/${_id}`}>
 					<CardContent>
 						<Image
 							src={images.main}
@@ -31,10 +42,8 @@ export default function PlantCard({ plant }) {
 							className='w-100'
 						/>
 					</CardContent>
-					
-				</Card>
-			</Link>
-			<ModalControl plant={plant} />
+				</Link>
+			</Card>
 		</span>
 	);
 }
