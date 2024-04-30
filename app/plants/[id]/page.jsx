@@ -75,9 +75,10 @@ export default async function PlantDetails({ params }) {
 
 export const generateMetadata = async ({ params }) => {
 	const { id } = params;
-	const plantMetadata = await getPlantMetadata(id);
-	if (plantMetadata.title) {
+	try {
+		const plantMetadata = await getPlantMetadata(id);
 		return plantMetadata;
+	} catch (error) {
+		return { title: 'Herb Nation' };
 	}
-	return { title: 'Herb Nation' };
 };
