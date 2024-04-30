@@ -19,19 +19,6 @@ export async function updateToApplications() {
 		await dbConnect();
 		Plant.syncIndexes();
 		const result = await Plant.updateMany({}, { $unset: { categories: 1 } });
-		// const res = JSON.parse(JSON.stringify(result));
-		// res.forEach((r) => {
-		// 	const syn = async (res) => {
-		// 		const { _id: id } = res;
-		// 		const ress = await Plant.updateOne(
-		// 			{ _id: id },
-		// 			{ $unset: { categories: 1 } },
-		// 			{ returnOriginal: false }
-		// 		);
-		// 		console.log({ ress });
-		// 	};
-		// 	syn(r);
-		// });
 	} catch (error) {
 		console.log({ error });
 	}
@@ -48,6 +35,16 @@ export async function getUnarchivedPlants() {
 }
 
 export async function getPlantById(id) {
+	try {
+		await dbConnect();
+		const result = await Plant.findOne({ _id: id, archive: false });
+		return JSON.parse(JSON.stringify(result));
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+export async function getPlantData(id) {
 	try {
 		await dbConnect();
 		const result = await Plant.findOne({ _id: id, archive: false });

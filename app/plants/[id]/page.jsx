@@ -1,9 +1,8 @@
-import { cache } from 'react';
 import Image from 'next/image';
 
 import Regions from './Regions';
 import Applications from './Applications';
-import { getPlantById } from '@/api/actions/plantActions';
+import { getPlantById, getPlantData } from '@/api/actions/plantActions';
 import NoData from '@/components/NoData';
 
 export default async function PlantDetails({ params }) {
@@ -74,19 +73,11 @@ export default async function PlantDetails({ params }) {
 	);
 }
 
-export const generateMetadata = cache(async ({ params }) => {
+export const generateMetadata = async ({ params }) => {
 	const { id } = params;
-	const plant = await getPlantById(id);
+	const plant = await getPlantData(id);
 	if (plant) {
 		return { title: plant.commonName, description: plant.description };
 	}
 	return { title: 'Herb Nation' };
-});
-// export async function generateMetadata({ params }) {
-// 	const { id } = params;
-// 	const plant = await getPlantById(id);
-// 	if (plant) {
-// 		return { title: plant.commonName, description: plant.description };
-// 	}
-// 	return { title: 'Herb Nation' };
-// }
+};
