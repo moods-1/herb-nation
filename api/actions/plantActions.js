@@ -44,6 +44,16 @@ export async function getPlantById(id) {
 	}
 }
 
+export async function getPlantMetadata(id) {
+	try {
+		await dbConnect();
+		const result = await Plant.findOne({ _id: id, archive: false });		
+		return {title: result.commonName, description: result.description};
+	} catch (error) {
+		console.log(error);
+	}
+}
+
 export async function getPlantsByApplication(application) {
 	try {
 		await dbConnect();

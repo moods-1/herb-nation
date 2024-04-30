@@ -2,8 +2,7 @@ import Image from 'next/image';
 
 import Regions from './Regions';
 import Applications from './Applications';
-import { getPlantById } from '@/api/actions/plantActions';
-import { getPlantData } from '@/api/actions/metadataActions';
+import { getPlantById, getPlantMetadata } from '@/api/actions/plantActions';
 import NoData from '@/components/NoData';
 
 export default async function PlantDetails({ params }) {
@@ -76,9 +75,9 @@ export default async function PlantDetails({ params }) {
 
 export const generateMetadata = async ({ params }) => {
 	const { id } = params;
-	const plant = await getPlantData(id);
-	if (plant) {
-		return { title: plant.commonName, description: plant.description };
+	const plantMetadata = await getPlantMetadata(id);
+	if (plantMetadata.title) {
+		return plantMetadata;
 	}
 	return { title: 'Herb Nation' };
 };
