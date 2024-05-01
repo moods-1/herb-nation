@@ -21,6 +21,7 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				'hero-pattern': "url('/images/herbs-spices-hero.jpg')",
+				'about-us': "url('/images/herbs-spices.jpg')",
 			},
 			colors: {
 				border: 'hsl(var(--border))',

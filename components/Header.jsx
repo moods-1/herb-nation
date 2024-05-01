@@ -35,9 +35,9 @@ export default function Header() {
 				<Image
 					src='/images/herb-nation-clear-logo.png'
 					alt='logo'
-					width={150}
-					height={40}
-					className='min-w-[150px]'
+					width={115}
+					height={20}
+					className='w-auto h-auto'
 				/>
 			</Link>
 			<nav className='gap-5 hidden sm:flex'>

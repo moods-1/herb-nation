@@ -27,9 +27,9 @@ export default function Footer() {
 					<Image
 						src='/images/herb-nation-clear-logo.png'
 						alt='logo'
-						width={100}
-						height={40}
-						className='min-w-[100px]'
+						width={80}
+						height={15}
+						className='w-auto h-auto'
 					/>
 				</Link>{' '}
 				&copy; 2024
