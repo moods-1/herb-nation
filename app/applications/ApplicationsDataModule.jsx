@@ -45,7 +45,7 @@ export default function DataModule() {
 					))}
 				</div>
 			) : (
-				<NoData message={'Sorry, no benefit data available.'} />
+				<NoData message={'Sorry, no application data available.'} />
 			)}
 		</>
 	);
